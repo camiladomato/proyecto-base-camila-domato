@@ -198,7 +198,7 @@ aside header {
 }
 
 .message .time {
-  color: var(--grey-700);
+  color: var(--grey-900);
   font-size: 14px;
   margin-top: 10px;
   text-align: end;
