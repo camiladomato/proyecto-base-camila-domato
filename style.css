@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 :root {
-  --primary-color: #400cce;
+  --primary-color:#5D3FD3;
   --grey-900: #0d1919;
   --grey-800: #121b22;
   --grey-600: #1f2c34;
@@ -12,9 +12,9 @@
   --grey-500: #dfdfe1;
   --grey-300: #fefff6;
   --grey-200: #f1f2f6;
-  --green-400: #522cc4;
-  --green-300: #762dca;
-  --green-100: #c24af1;
+  --green-400: #E6E6FA;
+  --green-300: #9370DB;
+  --green-100: #8A2BE2;
 }
 body {
   font-family: "Cause", cursive;
@@ -33,10 +33,6 @@ h3 {
 .web-app {
   max-width: 1100px;
   margin: auto;
-  background-image:url("./assets/img/demon-slayer.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
   display: grid;
   grid-template-columns: 320px 1fr;
   height: 90vh;
@@ -180,6 +176,10 @@ aside header {
 }
 
 .messages {
+  background-image:url("./assets/img/fondo-wsp-chat-original.png");
+  background-repeat:repeat;
+  background-position: center;
+  background-color: #f1ebe3;
   padding: 20px;
   flex: 1;
   display: flex;
@@ -190,7 +190,7 @@ aside header {
 
 
 .message {
-  background-color: var(--grey-300);
+  background-color: var(--green-100);
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.238);
   padding: 10px;
@@ -206,7 +206,7 @@ aside header {
 
 .me {
   align-self: end;
-  background-color: var(--green-100);
+  background-color: var(--green-300);
 }
 
 footer {
