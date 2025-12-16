@@ -1,5 +1,7 @@
 # 📱 Proyecto Base - Clon de WhatsApp
 
+Realizado para el curso de Programador Web - UTN comision 999200928.
+
 ## 🌟 1. Descripción Breve
 
 Este proyecto consiste en la maquetación (HTML y CSS) de una interfaz de usuario inspirada en la famosa aplicación de mensajería **WhatsApp**.
