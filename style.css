@@ -202,7 +202,7 @@ aside header {
 .chat {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  min-height: 70%;
   position: relative;
 }
 
@@ -210,7 +210,7 @@ aside header {
   background-color: #faf9ff;
   border-bottom: 1px solid var(--grey-500);
   display: flex;
-  padding: 10px;
+  padding: 8px;
   align-items: center;
   gap: 10px;
 }
@@ -240,24 +240,11 @@ aside header {
   overflow-y: auto;
   position: relative;
   z-index: 1;
-    overflow-x: hidden;
-}
-
-.messages::before {
-    content: ""; 
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    background-image: linear-gradient(rgba(255, 255, 255, 0.192), rgba(255, 255, 255, 0.247)), 
-                      url("./assets/img/fondo-wsp-chat-original.png");
-    background-repeat: repeat;
-    background-position: center;
-    background-color: #f1ebe3;
-    filter: blur(1.5px); 
-    transform: scale(1.02); 
+  overflow-x: hidden;
+  min-height: 0;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url("./assets/img/fondo-wsp-chat-original.png");
+  background-size: 65% ;
+  background-color: #f1ebe3;
 }
 
 
@@ -274,7 +261,6 @@ aside header {
 .message .time {
   color: var(--grey-900);
   font-size: 14px;
-  margin-top: 10px;
   text-align: end;
 }
 
@@ -330,9 +316,10 @@ aside header {
     border-radius: 5px;
 }
 .duration {
-    font-size: 11px;
+    font-size: 15px;
     color: var(--grey-700);
-    flex-shrink: 0;
+    margin-left: 60px;
+    
 }
 
 .me .play-btn {
@@ -348,6 +335,52 @@ aside header {
     color: var(--violet-100); 
 }
 
+.img-user{
+  width: 50px;
+  border-radius: 50%;
+}
+
+.duration-time{
+  display: flex;
+  justify-content:space-between;
+  
+}
+
+/*Mensaje gif*/
+.gif-message {
+    background-color: transparent; 
+    padding: 5px;
+    max-width: 50%; 
+    position: relative;
+    z-index: 2; 
+    align-self: end; 
+    overflow: hidden; 
+    min-height: 200px;
+}
+
+.gif-message .gif-preview {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    max-height: 250px;
+    object-fit: contain;  
+}
+
+.gif-message .time {
+    position: absolute; 
+    bottom: 8px;
+    right: 8px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white; 
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin: 0;
+    text-align: right;
+    z-index: 3; 
+}
+
 /*Pie del chat*/
 footer {
   display: flex;
@@ -357,6 +390,7 @@ footer {
   align-items: center;
   padding: 10px;
   gap: 10px;
+  flex-shrink: 0;
 }
 
 footer button {
@@ -402,20 +436,21 @@ footer textarea:focus {
   border: none;
 }
 
-footer .send {
-  background-color: #2dca7a;
+footer .enviar {
+ background-color: var(--violet-300); 
   border: none;
-  color: var(--grey-300);
-  width: 45px;
-  height: 30px;
-  border-radius: 20px;
-  padding: 5px;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  padding: 8px;
   cursor: pointer;
   transition: all .1s;
+  flex-shrink: 0;
 }
 
-footer .send:hover {
-  background-color: #138b80;
+footer .enviar:hover {
+  background-color: var(--violet-500); 
   transform: scale(0.98);
 }
 
