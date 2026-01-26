@@ -242,7 +242,7 @@ aside header {
   z-index: 1;
   overflow-x: hidden;
   min-height: 0;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url("./assets/img/fondo-wsp-chat-original.png");
+  background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url("../../assets/img/fondo-wsp-chat-original.png");
   background-size: 65% ;
   background-color: #f1ebe3;
 }
