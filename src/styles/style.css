@@ -198,6 +198,13 @@ aside header {
   border-color: var(--violet-300);
 }
 
+.empty{
+  text-align: center;
+  font: 16px;
+  color: white;
+  margin-top: 30px;
+}
+
 /*Chat individual*/
 .chat {
   display: flex;
