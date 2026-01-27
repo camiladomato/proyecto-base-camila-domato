@@ -18,10 +18,10 @@ const chatsData = [
     }
 ]
 
-const renderChats = () => {
-$listChat.innerHTML += ""
+const renderChats = (list) => {
+$listChat.innerHTML = ""
 
-chatsData.forEach((chat) => {
+list.forEach((chat) => {
 $listChat.innerHTML += `
 <li class="user-chat">
             <img src="${chat.avatar}" alt="foto de perfil de ${chat.name}" />
@@ -36,22 +36,26 @@ $listChat.innerHTML += `
 }
 
 const searchChats = () => {
-    let $chats = document.querySelectorAll(".user-chat");
-   const nameSearch = $buscador.value.toLowerCase();
-    
-   for (let i = 0 ; i < $chats.length; i++){
-    const $chat = $chats[i]
-    const $titleChat = $chat.querySelector("h3");
-    const name = $titleChat.textContent.toLowerCase();
 
-    if(name.includes(nameSearch)){
-        $chat.style.display="flex";
-    }else{
-        $chat.style.display= "none";
-    }
-   }
+//let $chats = document.querySelectorAll(".user-chat");
+   const nameSearch = $buscador.value.toLowerCase();
+// filtrando en data con filter
+   const filterchats = chatsData.filter((chat) => chat.name.toLocaleLowerCase().includes(nameSearch));
+   renderChats(filterchats);
+// manera anterior para filtar desde el dom   
+//    for (let i = 0 ; i < $chats.length; i++){
+//     const $chat = $chats[i]
+//     const $titleChat = $chat.querySelector("h3");
+//     const name = $titleChat.textContent.toLowerCase();
+
+//     if(name.includes(nameSearch)){
+//         $chat.style.display="flex";
+//     }else{
+//         $chat.style.display= "none";
+//     }
+//    }
 
 }
 
 $buscador.addEventListener("input", searchChats);
-renderChats()
+renderChats(chatsData)
