@@ -360,7 +360,6 @@ aside header {
     max-width: 50%; 
     position: relative;
     z-index: 2; 
-    align-self: end; 
     overflow: hidden; 
     min-height: 200px;
 }
