@@ -65,31 +65,42 @@ const renderMessages = (list) => {
         </div>
         `
     });
+    $listMessages.scrollTop = $listMessages.scrollHeight;
 }
 
-const sendMessage = (event) => {
+const processMessage = () => {
+    const text = $message.value.trim(); 
+    if (text === "") return; 
+
     const now = new Date();
+    const hour = now.getHours() + ":" + now.getMinutes().toString().padStart(2, '0');
 
-    if (event.key === "Enter") {
-        const newMessage = {
-            text: $message.value,
-            me: true,
-            hour: now.getHours() + ":" + now.getMinutes()
-        }
-        const messageInLs = loadChats();
-        messages = [...messageInLs , newMessage];
+    const newMessage = {
+        text: text,
+        me: true,
+        hour: hour
+    };
 
-        saveChats(messages);
-        renderMessages(messages);
+    const messageInLs = loadChats();
+    messages = [...messageInLs, newMessage];
 
-        $formMessage.reset();
-    }
+    saveChats(messages);
+    renderMessages(messages);
+    $formMessage.reset();
+};
 
-}
+
+$formMessage.addEventListener("submit", (e) => {
+    e.preventDefault(); 
+    processMessage();
+});
 
 $message.addEventListener("keydown", (e) => {
-    sendMessage(e)
-})
+    if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        processMessage();
+    }
+});
 
 const initialMessages = loadChats();
 renderMessages(initialMessages);
