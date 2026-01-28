@@ -40,24 +40,20 @@ $listChat.innerHTML += `
 
 const searchChats = () => {
 
-//let $chats = document.querySelectorAll(".user-chat");
-   const nameSearch = $buscador.value.toLowerCase();
-// filtrando en data con filter
-   const filterchats = chatsData.filter((chat) => chat.name.toLocaleLowerCase().includes(nameSearch));
-   renderChats(filterchats);
-// manera anterior para filtar desde el dom   
-//    for (let i = 0 ; i < $chats.length; i++){
-//     const $chat = $chats[i]
-//     const $titleChat = $chat.querySelector("h3");
-//     const name = $titleChat.textContent.toLowerCase();
+   const nameSearch = $buscador.value
+        .toLowerCase()
+        .normalize("NFD") 
+        .replace(/[\u0300-\u036f]/g, "");
 
-//     if(name.includes(nameSearch)){
-//         $chat.style.display="flex";
-//     }else{
-//         $chat.style.display= "none";
-//     }
-//    }
-
+   const filterchats = chatsData.filter((chat) => {
+    const chatNameNormalized = chat.name
+    .toLocaleLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+    
+    return chatNameNormalized.includes(nameSearch);
+   });
+     renderChats(filterchats);
 }
 
 $buscador.addEventListener("input", searchChats);
