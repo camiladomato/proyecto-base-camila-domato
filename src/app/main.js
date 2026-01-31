@@ -1,22 +1,32 @@
 
 let $buscador = document.getElementById("search");
 let $listChat = document.querySelector(".chats ul")
+let appData = []; 
+let activeChat = null;
 
 
-const chatsData = [
-    {   name: "Damián Benitez",
-        lastMessage: "Vamos al cine ?",
-        avatar: "./assets/img/dami.jpg",
-    },
-    {   name: "Grupo UTN - turno mañana",
-        lastMessage: "que hicieron hoy?",
-        avatar: "./assets/img/muichiro.jpg",
-    },
-    {   name: "Movistar",
-        lastMessage: "Movistar te acerca la factura",
-        avatar: "./assets/img/mv.png",
+async function cargarDatos() {
+    const localData = localStorage.getItem("whatsapp_data");
+    console.log(localData)
+    
+    if (localData) {
+        appData = JSON.parse(localData);
+    } else {
+        const respuesta = await fetch('./src/app/data.json');
+        const resultado = await respuesta.json();
+        appData = resultado.chats;
+        guardarEnLS(); 
     }
-]
+    
+    renderChats(appData);
+    if (appData.length > 0) selectChat(0);
+    
+}
+const guardarEnLS = () => {
+    localStorage.setItem("whatsapp_data", JSON.stringify(appData));
+};
+
+
 
 const renderChats = (list) => {
 $listChat.innerHTML = ""
@@ -24,37 +34,48 @@ $listChat.innerHTML = ""
 if(list.length === 0){
  $listChat.innerHTML = "<li class='empty'> No se encuentraron resultados.</li>"
 }
-list.forEach((chat) => {
+list.forEach((chat ,index) => {
+const ultimoMsg = chat.messages[chat.messages.length - 1]?.text || "Sin mensajes";
 $listChat.innerHTML += `
-<li class="user-chat">
+<li class="user-chat" onclick="selectChat(${index})">
             <img src="${chat.avatar}" alt="foto de perfil de ${chat.name}" />
             <div class="chat-info">
               <h3>${chat.name}</h3>
-              <p>${chat.lastMessage}</p>
+              <p>${ultimoMsg}</p>
             </div>
-            <span class="time">14:12 p. m.</span>
-          </li>      
+           <span class="time">${chat.messages[chat.messages.length - 1]?.hour || ""}</span>
+          </li> 
+               
 `
 })
-}
+};
 
-const searchChats = () => {
+const selectChat = (index) => {
+    activeChat = appData[index];
 
-   const nameSearch = $buscador.value
-        .toLowerCase()
-        .normalize("NFD") 
-        .replace(/[\u0300-\u036f]/g, "");
+    const $headerImg = document.querySelector(".chat-header img");
+    const $headerName = document.querySelector(".chat-header h3");
 
-   const filterchats = chatsData.filter((chat) => {
-    const chatNameNormalized = chat.name
-    .toLocaleLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "");
-    
-    return chatNameNormalized.includes(nameSearch);
-   });
-     renderChats(filterchats);
-}
+    if (activeChat) {
+        $headerImg.src = activeChat.avatar;
+        $headerName.textContent = activeChat.name;
 
-$buscador.addEventListener("input", searchChats);
-renderChats(chatsData)
+        if (typeof renderMessages === 'function') {
+            renderMessages(activeChat.messages);
+        }
+    }
+};
+
+
+
+
+$buscador.addEventListener("input", () => {
+    const nameSearch = $buscador.value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const filterchats = appData.filter((chat) => {
+        const chatNameNormalized = chat.name.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        return chatNameNormalized.includes(nameSearch);
+    });
+    renderChats(filterchats);
+});
+
+cargarDatos();

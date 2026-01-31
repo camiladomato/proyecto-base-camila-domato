@@ -3,50 +3,6 @@ const $listMessages = document.querySelector(".messages");
 const $message = document.getElementById("message");
 const $formMessage = document.getElementById("formMessage");
 
-let messages = [
-    {
-        id: 1,
-        type: "text",
-        text: "¡Hola! ¿Querés venir al cine?🎫​📽️​🎞️​🎬​",
-        hour: "14:12 p. m.",
-        me: false,
-    },
-    {
-        id: 2,
-        text: "Si, dale. ¿A que hora?​",
-        type: "audio", 
-        source: "./assets/audio/mensaje.mp3",
-        duration:"0:45",
-        hour: "14:13 p. m.",
-        me: true,
-    },
-    {
-        id: 3,
-        type: "gif", 
-        source: "./assets/img/gato-baila.gif",
-        hour: "14:13 p. m.",
-        me: false,
-    },
-    {
-        id: 4,
-        text: "okiii​",
-        hour: "14:13 p. m.",
-        me: true,
-    },
-    {
-        id: 5,
-        text: "Daleee , voy comprando 🍿​🥤​​",
-        hour: "14:14 p. m.",
-        me: false,
-    },
-    {
-        id: 6,
-        type: "gif", 
-        source: "./assets/img/michael-jackson-thriller.gif",
-        hour: "14:13 p. m.",
-        me: false,
-    }
-];
 
 const loadChats = () => {
     const data = JSON.parse(localStorage.getItem("messages"));

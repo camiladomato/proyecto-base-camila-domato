@@ -1,0 +1,85 @@
+{
+  "chats": [
+    {
+      "chatId": 1,
+      "name": "Damián Benitez",
+      "avatar": "./assets/img/dami.jpg",
+      "messages": [
+        {
+          "messageId": 1,
+          "type": "text",
+          "text": "¡Hola! ¿Querés venir al cine?🎫​📽️​🎞️​🎬​",
+          "hour": "14:12 p. m.",
+          "me": false
+        },
+        {
+          "messageId": 2,
+          "type": "audio",
+          "text": "Mensaje de voz",
+          "source": "./assets/audio/mensaje.mp3",
+          "duration": "0:45",
+          "hour": "14:13 p. m.",
+          "me": true
+        },
+        {
+          "messageId": 3,
+          "type": "gif",
+          "text": "",
+          "source": "./assets/img/gato-baila.gif",
+          "hour": "14:13 p. m.",
+          "me": false
+        },
+        {
+          "messageId": 4,
+          "type": "text",
+          "text": "okiii​",
+          "hour": "14:13 p. m.",
+          "me": true
+        },
+        {
+          "messageId": 5,
+          "type": "text",
+          "text": "Daleee , voy comprando 🍿​🥤​​",
+          "hour": "14:14 p. m.",
+          "me": false
+        },
+        {
+          "messageId": 6,
+          "type": "gif",
+          "text": "",
+          "source": "./assets/img/michael-jackson-thriller.gif",
+          "hour": "14:13 p. m.",
+          "me": false
+        }
+      ]
+    },
+    {
+      "chatId": 2,
+      "name": "Grupo UTN - turno mañana",
+      "avatar": "./assets/img/muichiro.jpg",
+      "messages": [
+        {
+          "messageId": 201,
+          "type": "text",
+          "text": "¿Cómo vienen con el proyecto?",
+          "hour": "09:00",
+          "me": false
+        }
+      ]
+    },
+    {
+      "chatId": 3,
+      "name": "Movistar",
+      "avatar": "./assets/img/mv.png",
+      "messages": [
+        {
+          "messageId": 301,
+          "type": "text",
+          "text": "Tu factura está lista",
+          "hour": "09:00",
+          "me": false
+        }
+      ]
+    }
+  ]
+}
